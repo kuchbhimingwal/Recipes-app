@@ -1,8 +1,9 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData , Link } from "react-router-dom";
 
 function Home(){
   const prop= useLoaderData()
+
 
   return(
     <div className="flex flex-wrap justify-center gap-9 m-4">
@@ -22,11 +23,19 @@ function Home(){
           <a href={item.youtubeLink} target="_blank" rel="noopener noreferrer">
             <button
               type="button"
-              className="mt-4 rounded-sm bg-black px-2.5 py-1 text-[10px] font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              className="w-full h-8 mt-4 rounded-sm bg-black px-2.5 py-1 text-[10px] font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               Watch Video
             </button>
           </a>
+          <Link to="/recipepage">
+              <button
+                type="button"
+                className="w-full h-8 mt-4 rounded-sm bg-black px-2.5 py-1 text-[10px] font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              >
+                Recipe
+              </button>
+            </Link>
         </div>
       </div>
       
