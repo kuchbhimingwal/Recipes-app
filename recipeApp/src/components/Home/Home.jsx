@@ -7,7 +7,7 @@ function Home(){
 
   return(
     <div className="flex flex-wrap justify-center gap-9 m-4">
-      {prop.map((item) => (
+      {prop.map((item,index) => (
         <div className="w-[300px] rounded-md border flex flex-wrap">
         <img
           src={item.imgTag}
@@ -28,7 +28,7 @@ function Home(){
               Watch Video
             </button>
           </a>
-          <Link to="/recipepage">
+          <Link to={`/recipepage/${index}`}>
               <button
                 type="button"
                 className="w-full h-8 mt-4 rounded-sm bg-black px-2.5 py-1 text-[10px] font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"

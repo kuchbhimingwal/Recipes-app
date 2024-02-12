@@ -14,7 +14,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
       <Route loader={recipeData} path='' element={<Home />} />
-      <Route path='recipepage' element={<RecipePage />} />
+      <Route path='recipepage/:cardid' element={<RecipePage />} />
     </Route>
   )
 )
