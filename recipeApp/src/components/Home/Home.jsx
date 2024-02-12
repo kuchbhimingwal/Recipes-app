@@ -20,14 +20,12 @@ function Home(){
             {item.description}
           </p>
 
-          <a href={item.youtubeLink} target="_blank" rel="noopener noreferrer">
             <button
               type="button"
               className="w-full h-8 mt-4 rounded-sm bg-black px-2.5 py-1 text-[10px] font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
-              Watch Video
+              Add to fav
             </button>
-          </a>
           <Link to={`/recipepage/${index}`}>
               <button
                 type="button"
