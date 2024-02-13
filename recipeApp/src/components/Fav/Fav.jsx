@@ -1,14 +1,12 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import FavContext from "../../context/favContext";
 
 function Fav(){
-
-  const {favList} = useContext(FavContext)
+  const {favList, removeList} = useContext(FavContext)
 
   return(
     <div className="flex flex-wrap justify-center gap-9 m-4">
-      <h1>Favourites</h1>
       {favList.map((item,index)=>(
         <div className="w-[300px] rounded-md border flex flex-wrap">
         <img
@@ -25,18 +23,18 @@ function Fav(){
             <button
               type="button"
               className="w-full h-8 mt-4 rounded-sm bg-black px-2.5 py-1 text-[10px] font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-              onClick={() => addList(index)}
+              onClick={() => removeList(index)}
             >
-              Add to fav
+              Remove from fav
             </button>
-          <Link to={`/recipepage/${index}`}>
+          {/* <Link to={`javascript:history.back()/recipepage/${index}`}>
               <button
                 type="button"
                 className="w-full h-8 mt-4 rounded-sm bg-black px-2.5 py-1 text-[10px] font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
               >
                 Recipe
               </button>
-            </Link>
+            </Link> */}
         </div>
       </div>
       ))}
