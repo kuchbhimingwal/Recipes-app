@@ -5,9 +5,9 @@ const FavContextProvider = ({children}) =>{
   const[favList, setFavList] = useState([])
 
   return(
-    <FavContextProvider value={{favList,setFavList}}>
+    <FavContext.Provider value={{favList,setFavList}}>
       {children}
-    </FavContextProvider>
+    </FavContext.Provider>
   )
 }
 

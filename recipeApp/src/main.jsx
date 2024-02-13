@@ -7,6 +7,7 @@ import Home from './components/Home/Home.jsx'
 import { recipeData } from './data/Data.js'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import RecipePage from './components/RecipePage/RecipePage.jsx'
+import Fav from './components/Fav/Fav.jsx'
 
 
 
@@ -15,6 +16,7 @@ const router = createBrowserRouter(
     <Route path='/' element={<Layout />}>
       <Route loader={recipeData} path='' element={<Home />} />
       <Route loader={recipeData} path='recipepage/:cardid' element={<RecipePage />} />
+      <Route loader={recipeData} path='favlist' element={<Fav />} />
     </Route>
   )
 )
