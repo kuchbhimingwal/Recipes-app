@@ -6,7 +6,6 @@ const FavContextProvider = ({children}) =>{
 
   const removeList = (index)=>{
     setFavList([...favList.slice(0, index), ...favList.slice(index + 1)])
-    console.log(favList)
   }
   return(
     <FavContext.Provider value={{favList,setFavList,removeList}}>

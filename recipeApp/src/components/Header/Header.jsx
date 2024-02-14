@@ -1,6 +1,28 @@
-import React from "react";
-import {Link, NavLink} from 'react-router-dom'
+import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
+import {Link, NavLink, useLoaderData} from 'react-router-dom'
+import FavContext from "../../context/favContext";
+import { recipeData } from "../../data/Data";
+
 function Header (){
+    const [searchResult, setsearchResult] = useState([])
+    const data = recipeData();
+    const {favList} = useContext(FavContext)
+    const [search, setSearch] = useState("");
+    const handleSearch = () =>{
+        if(search != ""){
+            const namesArray = data.map(obj => obj.name);
+            const searchLower = search.toLowerCase();
+            // console.log(namesArray);
+            setsearchResult(namesArray.filter(name=> name.toLowerCase().includes(searchLower)));
+            console.log(searchResult)
+        }else if(search == ""){
+            setsearchResult([]);
+        }
+    }
+
+    useEffect(()=>{ 
+        handleSearch()
+    },[search])
   return(
     <header className="shadow sticky z-50 top-0 top-0 bg-cover bg-center">
           <nav className="bg-white  border-gray-200 px-4 lg:px-6 py-2.5">
@@ -25,7 +47,7 @@ function Header (){
                                        ${isActive ? "text-orange-700" : "text-grey-700"}border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                   }
                               >
-                                  Favourites
+                                  Favourites {favList.length}
                               </NavLink>
                           </li>
 
@@ -55,7 +77,18 @@ function Header (){
                       </ul>
           </nav>
 
-          <input type="text" class="w-full px-4 py-2 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500" placeholder="Search..." />
+          <input class="w-full px-4 py-2 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500"
+           placeholder="Search for your recipe"
+           value={search}
+           onChange={(e)=> setSearch(e.target.value)}
+           type="text"  />
+           <ul class="bg-white border border-gray-100 w-full mt-2 absolute text-left">
+            
+            {searchResult.map((item)=>(
+                <li class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900">{item}
+                </li>  
+            ))}                  
+           </ul>
     </header>
   )
 }
