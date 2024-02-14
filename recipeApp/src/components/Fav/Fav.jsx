@@ -1,9 +1,14 @@
-import React, { useCallback, useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, {useContext} from "react";
 import FavContext from "../../context/favContext";
+import { useNavigate } from "react-router-dom";
 
 function Fav(){
   const {favList, removeList} = useContext(FavContext)
+  const navigate = useNavigate();
+  const handleClick = (e)=>{
+    const target = e.target.getAttribute('data-key')
+    navigate(`/recipepage/${target}`)
+  }
 
   return(
     <div className="flex flex-wrap justify-center gap-9 m-4">
@@ -27,14 +32,14 @@ function Fav(){
             >
               Remove from fav
             </button>
-          {/* <Link to={`javascript:history.back()/recipepage/${index}`}>
               <button
+                data-key={item.key}
+                onClick={handleClick}
                 type="button"
                 className="w-full h-8 mt-4 rounded-sm bg-black px-2.5 py-1 text-[10px] font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
               >
                 Recipe
               </button>
-            </Link> */}
         </div>
       </div>
       ))}
