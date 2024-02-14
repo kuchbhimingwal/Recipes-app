@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
-import {Link, NavLink, useLoaderData} from 'react-router-dom'
+import { NavLink, useNavigate} from 'react-router-dom'
 import FavContext from "../../context/favContext";
 import { recipeData } from "../../data/Data";
 
@@ -8,16 +8,32 @@ function Header (){
     const data = recipeData();
     const {favList} = useContext(FavContext)
     const [search, setSearch] = useState("");
+    const navigate = useNavigate();
+
     const handleSearch = () =>{
         if(search != ""){
             const namesArray = data.map(obj => obj.name);
             const searchLower = search.toLowerCase();
             // console.log(namesArray);
             setsearchResult(namesArray.filter(name=> name.toLowerCase().includes(searchLower)));
-            console.log(searchResult)
+            // console.log(searchResult)
         }else if(search == ""){
             setsearchResult([]);
         }
+    }
+
+
+    const handleClick = (e)=>{
+        const namesArray = data.map(obj => obj.name);
+
+        namesArray.map((name,index)=>{
+            if(name === e.target.innerText){
+                console.log("found" + index)
+                navigate(`/recipepage/${index}`);
+                setSearch("")
+            }
+        })
+
     }
 
     useEffect(()=>{ 
@@ -85,7 +101,7 @@ function Header (){
            <ul class="bg-white border border-gray-100 w-full mt-2 absolute text-left">
             
             {searchResult.map((item)=>(
-                <li class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900">{item}
+                <li onClick={handleClick} class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900">{item}
                 </li>  
             ))}                  
            </ul>
