@@ -8,7 +8,7 @@ function Fav(){
   return(
     <div className="flex flex-wrap justify-center gap-9 m-4">
       {favList.map((item,index)=>(
-        <div className="w-[300px] rounded-md border flex flex-wrap">
+        <div key={index} className="w-[300px] rounded-md border flex flex-wrap">
         <img
           src={item.imgTag}
           alt={item.name}

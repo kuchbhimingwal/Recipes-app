@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
+import React, {useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate} from 'react-router-dom'
 import FavContext from "../../context/favContext";
 import { recipeData } from "../../data/Data";
@@ -93,15 +93,15 @@ function Header (){
                       </ul>
           </nav>
 
-          <input class="w-full px-4 py-2 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500"
+          <input className="w-full px-4 py-2 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500"
            placeholder="Search for your recipe"
            value={search}
            onChange={(e)=> setSearch(e.target.value)}
            type="text"  />
-           <ul class="bg-white border border-gray-100 w-full mt-2 absolute text-left">
+           <ul className="bg-white border border-gray-100 w-full mt-2 absolute text-left">
             
             {searchResult.map((item)=>(
-                <li onClick={handleClick} class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900">{item}
+                <li key={item} onClick={handleClick} className="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900">{item}
                 </li>  
             ))}                  
            </ul>
