@@ -27,7 +27,7 @@ function Fav(){
 
             <button
               type="button"
-              className="w-full h-8 mt-4 rounded-sm bg-black px-2.5 py-1 text-[10px] font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              className="rounded-lg shadow m-4 dark:bg-gray-800 w-60 h-8 mt-4  px-2.5 py-1 text-[10px] font-semibold text-white  hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
               onClick={() => removeList(index)}
             >
               Remove from fav
@@ -36,7 +36,7 @@ function Fav(){
                 data-key={item.key}
                 onClick={handleClick}
                 type="button"
-                className="w-full h-8 mt-4 rounded-sm bg-black px-2.5 py-1 text-[10px] font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                className="rounded-lg shadow m-4 dark:bg-gray-800 w-60 h-8 mt-4  px-2.5 py-1 text-[10px] font-semibold text-white  hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
               >
                 Recipe
               </button>
